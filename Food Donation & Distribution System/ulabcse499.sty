@@ -1,0 +1,94 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ulabcse499}[2021/02/02 Capstone project/project package]
+
+\RequirePackage{microtype}
+\RequirePackage{mathpazo}
+\RequirePackage{textcase}
+\RequirePackage{ifthen}
+\RequirePackage{amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{natbib}
+\RequirePackage{multicol}
+\RequirePackage{xspace}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{tcolorbox}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\RequirePackage{listings}
+\usepackage{newverbs}
+\newverbcommand{\cverb}{\color{blue}}{}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=red,
+    linktoc=all
+}
+
+\tcbset{colback=Gray!10,colframe=black, boxrule=0pt}
+
+% set the default code style
+\lstdefinelanguage{latex} {morekeywords={def,begin,centering,end,xspace,hline,caption,label,textit,@article,@misc,cite,ref,chapter,section,subsection,subsubsection,include},morecomment=[l]{\%},}
+\lstset{
+    frame=single, % draw a frame at the top and bottom of the code block
+    backgroundcolor=\color{Gray!10}, 
+    tabsize=4, % tab space width
+    showstringspaces=true, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{Red},
+    stringstyle=\color{ForestGreen},
+    basicstyle=\small\ttfamily, % basic font setting
+    emph={tabular,table,equation,figure,includegraphics,width,textwidth,title,author,journal,volume,pages,year,editor,url,howpublished,publisher},
+    emphstyle={\color{YellowOrange}},
+    keywordstyle=\color{blue},
+}
+
+\setlength{\topmargin}{0.0in}
+\setlength{\oddsidemargin}{0.33in}
+\setlength{\evensidemargin}{-0.08in}
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.0in}
+
+%-----------------------------------------------------------------
+\newcommand{\frontmatter}[1]{%
+  \ifthenelse{\equal{#1}{1}}
+    {\include{./FrontMatter/titlePage}
+    \include{./FrontMatter/copyright}
+    \include{./FrontMatter/declaration}
+    \include{./FrontMatter/certificate}
+    \include{./FrontMatter/acknowledgements}
+    \include{./FrontMatter/dedication}
+    \include{./abstract}}
+    {\ifthenelse{\equal{#1}{2}}
+      {\include{./FrontMatter/titlePage2}
+      \include{./FrontMatter/copyright2}
+      \include{./FrontMatter/declaration2}
+      \include{./FrontMatter/certificate2}
+      \include{./FrontMatter/acknowledgements2}
+      \include{./FrontMatter/dedication2}
+      \include{./abstract}}
+      {\include{./FrontMatter/titlePage3}
+      \include{./FrontMatter/copyright3}
+      \include{./FrontMatter/declaration3}
+      \include{./FrontMatter/certificate3}
+      \include{./FrontMatter/acknowledgements3}
+      \include{./FrontMatter/dedication3}
+      \include{./abstract}}
+    }
+  }
+
+\newcommand{\coverpage}[1]{%
+  \ifthenelse{\equal{#1}{1}} {
+	\include{./CoverPage/cover}}
+	{\ifthenelse{\equal{#1}{2}} 
+	  {\include{./CoverPage/cover2}}
+	  {\include{./CoverPage/cover3}}
+	}
+  }
+%-----------------------------------------------------------------
+\def\Department{Computer Science and Engineering\xspace}
+\def\University{University of Liberal Arts Bangladesh\xspace}
+\def\Degree{Design Project 1\xspace}
+\def\HodName{Professor Muhammad Golam Kibria, PhD, SMIEEE\xspace}
+\def\HodPosition{Professor and Head\xspace}
